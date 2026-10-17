@@ -1,0 +1,28 @@
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+BasedOnStyle: LLVM
+
+AlignAfterOpenBracket: Align
+AlignArrayOfStructures: Right
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveBitFields: Consecutive
+AlignConsecutiveDeclarations: Consecutive
+AlignConsecutiveMacros: Consecutive
+AlignEscapedNewlines: Left
+AlignOperands: AlignAfterOperator
+AlignTrailingComments: Always
+
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+
+AlwaysBreakAfterDefinitionReturnType: TopLevel
+BreakBeforeBraces: Allman
+BreakBeforeBinaryOperators: NonAssignment
+
+ContinuationIndentWidth: 4
+ColumnLimit: 80
+IndentWidth: 4
+UseTab: Never
+
+PointerAlignment: Left
+# SpaceBeforeParens: Always
