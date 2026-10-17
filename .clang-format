@@ -14,6 +14,8 @@ AlignTrailingComments: Always
 
 AllowAllArgumentsOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLoopsOnASingleLine: true
 
 AlwaysBreakAfterDefinitionReturnType: TopLevel
 BreakBeforeBraces: Allman
@@ -25,4 +27,3 @@ IndentWidth: 4
 UseTab: Never
 
 PointerAlignment: Left
-# SpaceBeforeParens: Always
