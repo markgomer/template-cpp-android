@@ -1,6 +1,11 @@
 CompileFlags:
   # readlink -f $(which gcc)
-  Compiler: /nix/store/z4c6k0mrlkwl3s4w9ysxc8vq1wylm3ms-gcc-wrapper-15.3.0/bin/gcc
-
+  Compiler: /home/majunior/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++
   Add: [
+    --target=aarch64-linux-android24,
+    -std=c++17,
+    -I../src,
+    -I../include,
+    -I/home/majunior/Android/ndk/28.2.13676358/sources/android/native_app_glue
   ]
+
