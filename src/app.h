@@ -1,7 +1,8 @@
-#ifndef APP_H
-#define APP_H
+#pragma once
+
 
 namespace app {
+
 
 enum class TouchAction {
     Down,
@@ -27,6 +28,5 @@ void shutdown();
 // Input callbacks
 void on_touch(const TouchEvent& event);
 
-} // namespace app
 
-#endif // APP_H
+} // namespace app
