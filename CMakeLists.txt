@@ -79,5 +79,5 @@ else()
     FetchContent_MakeAvailable(glfw)
 
     add_executable(desktop src/app.cpp platform/desktop/main.cpp)
-    target_link_libraries(desktop PRIVATE glfw)
+    target_link_libraries(desktop PRIVATE glfw GLESv2)
 endif()
