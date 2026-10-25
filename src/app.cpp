@@ -2,7 +2,7 @@
 #include <GLES3/gl3.h>
 #include <cmath>
 
-namespace
+namespace // make these "static", global (g_), but private to this file.
 {
 int   g_width        = 0;
 int   g_height       = 0;
@@ -10,6 +10,7 @@ float g_elapsed_time = 0.0f;
 float g_touch_tint   = 0.0f;
 } // namespace
 
+/* INFO: group the public API, app::update etc. */
 namespace app
 {
 
