@@ -8,9 +8,9 @@ CompileFlags:
   Add: [
     --target=aarch64-linux-android24,
     -std=c++17,
-    -I../src,
-    -I../include,
+    -I/home/majunior/Projects/tetris-attack/src,
+    -I/home/majunior/Projects/tetris-attack/include,
+    -I/home/majunior/Projects/tetris-attack/libs,
     -I/home/majunior/Android/ndk/28.2.13676358/sources/android/native_app_glue,
-    -I../../build/desktop/_deps/glfw-src/include
   ]
 
