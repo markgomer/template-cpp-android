@@ -1,6 +1,8 @@
 # for system libs: pkg-config --cflags sfml-all
 
 CompileFlags:
+  # NOTE: gotta have "clangd --query-driver=/nix/store/*/bin/clang*" (or gcc) in
+  # the configuration file on Neovim!
   # readlink -f $(which gcc)
   Compiler: /home/majunior/Android/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++
   Add: [
