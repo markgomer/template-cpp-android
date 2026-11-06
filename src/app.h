@@ -1,32 +1,39 @@
-#pragma once
+#ifndef APP_H
+#define APP_H
 
 
-namespace app {
+typedef enum {
+    APP_TOUCH_DOWN,
+    APP_TOUCH_UP,
+    APP_TOUCH_MOVE,
+    APP_TOUCH_CANCEL
+} App_TouchAction;
 
 
-enum class TouchAction {
-    Down,
-    Up,
-    Move,
-    Cancel
-};
-
-struct TouchEvent {
+typedef struct {
     int id;
     float x;
     float y;
-    TouchAction action;
-};
+    App_TouchAction action;
+} TouchEvent;
+
+#ifdef __cplusplus
+extern "C" {
+#endif // __cplusplus
 
 // Lifecycle callbacks
-void init(int width, int height);
-void resize(int width, int height);
-void update(float dt);
-void render();
-void shutdown();
+void app_init(int width, int height);
+void app_resize(int width, int height);
+void app_update(float dt);
+void app_render();
+void app_shutdown();
+
 
 // Input callbacks
-void on_touch(const TouchEvent& event);
+void app_on_touch(TouchEvent* event);
 
+#ifdef __cplusplus
+}
+#endif // __cplusplus
 
-} // namespace app
+#endif // APP_H

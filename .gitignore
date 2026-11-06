@@ -1,11 +1,10 @@
 .gradle/
+bin/
 build/
 app/build/
 .cxx/
 app/.cxx/
 local.properties
 *.iml
-.idea/
-.DS_Store
 *~
 *.a

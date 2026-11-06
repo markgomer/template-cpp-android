@@ -115,12 +115,12 @@ init_display(AndroidEngine* engine)
 
     if (!engine->initialized_app)
     {
-        app::init(engine->width, engine->height);
+        app_init(engine->width, engine->height);
         engine->initialized_app = true;
     }
     else
     {
-        app::resize(engine->width, engine->height);
+        app_resize(engine->width, engine->height);
     }
 
     engine->last_frame_time = std::chrono::steady_clock::now();
@@ -161,7 +161,7 @@ full_cleanup(AndroidEngine* engine)
     }
     if (engine->initialized_app)
     {
-        app::shutdown();
+        app_shutdown();
         engine->initialized_app = false;
     }
 }
@@ -188,7 +188,7 @@ handle_cmd(struct android_app* app, int32_t cmd)
                             &engine->width);
             eglQuerySurface(engine->display, engine->surface, EGL_HEIGHT,
                             &engine->height);
-            app::resize(engine->width, engine->height);
+            app_resize(engine->width, engine->height);
         }
         break;
     case APP_CMD_GAINED_FOCUS:
@@ -229,7 +229,7 @@ handle_input(struct android_app* app, AInputEvent* event)
                                  & AMOTION_EVENT_ACTION_POINTER_INDEX_MASK)
                              >> AMOTION_EVENT_ACTION_POINTER_INDEX_SHIFT;
 
-        app::TouchEvent touch{};
+        TouchEvent touch = {0};
         touch.id = AMotionEvent_getPointerId(event, pointer_index);
         touch.x  = AMotionEvent_getX(event, pointer_index);
         touch.y  = AMotionEvent_getY(event, pointer_index);
@@ -238,23 +238,23 @@ handle_input(struct android_app* app, AInputEvent* event)
         {
         case AMOTION_EVENT_ACTION_DOWN:
         case AMOTION_EVENT_ACTION_POINTER_DOWN:
-            touch.action = app::TouchAction::Down;
+            touch.action = APP_TOUCH_DOWN;
             break;
         case AMOTION_EVENT_ACTION_UP:
         case AMOTION_EVENT_ACTION_POINTER_UP:
-            touch.action = app::TouchAction::Up;
+            touch.action = APP_TOUCH_UP;
             break;
         case AMOTION_EVENT_ACTION_MOVE:
-            touch.action = app::TouchAction::Move;
+            touch.action = APP_TOUCH_MOVE;
             break;
         case AMOTION_EVENT_ACTION_CANCEL:
-            touch.action = app::TouchAction::Cancel;
+            touch.action = APP_TOUCH_CANCEL;
             break;
         default:
             return 0;
         }
 
-        app::on_touch(touch);
+        app_on_touch(&touch);
         return 1;
     }
     return 0;
@@ -301,8 +301,8 @@ android_main(struct android_app* state)
                            .count();
             engine.last_frame_time = current_time;
 
-            app::update(dt);
-            app::render();
+            app_update(dt);
+            app_render();
 
             if (!eglSwapBuffers(engine.display, engine.surface))
             {

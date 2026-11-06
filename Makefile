@@ -4,7 +4,7 @@ desktop:
 	cmake -S . -B build/desktop
 	cmake --build build/desktop -j
 
-runDesktop: buildDekstop
+runDesktop: desktop
 	./bin/desktop/desktop
 
 apk:

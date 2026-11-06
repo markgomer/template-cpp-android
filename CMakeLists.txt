@@ -10,7 +10,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/desktop)
 # =============================================================================
 set(PORTABLE_SOURCES
     src/app.h
-    src/app.cpp
+    src/app.c
 )
 
 # =============================================================================
@@ -79,6 +79,6 @@ else()
 
     FetchContent_MakeAvailable(glfw)
 
-    add_executable(desktop src/app.cpp platform/desktop/main.cpp)
+    add_executable(desktop src/app.c platform/desktop/main.c)
     target_link_libraries(desktop PRIVATE glfw GLESv2)
 endif()
